@@ -236,6 +236,16 @@
         </div>
 
         <div class="form-group">
+            <label for="experiencia">Qual seu nível de experiência com computadores e tecnologia?<span>*</span></label>
+            <textarea id="experiencia" class="form-control" required placeholder="Ex: Sei usar o Canva, tenho agilidade no computador, facilidade com sistemas, etc."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="dev_ia">Tem interesse em aprender a criar sites e sistemas usando IA como assistente? Já teve alguma experiência?<span>*</span></label>
+            <textarea id="dev_ia" class="form-control" required placeholder="Conte se curte a ideia de usar inteligência artificial para programar ou se já tentou algo parecido antes."></textarea>
+        </div>
+
+        <div class="form-group">
             <label for="interesse">O que mais te despertou interesse nesta parceria com a GP Tech?<span>*</span></label>
             <textarea id="interesse" class="form-control" required placeholder="Com base no fluxo de fotos e montagem que explicamos acima..."></textarea>
         </div>
@@ -261,6 +271,8 @@
         const nome = document.getElementById('nome').value;
         const bairro = document.getElementById('bairro').value;
         const disponibilidade = document.querySelector('input[name="disponibilidade"]:checked').value;
+        const experiencia = document.getElementById('experiencia').value;
+        const dev_ia = document.getElementById('dev_ia').value;
         const interesse = document.getElementById('interesse').value;
         const atitude = document.getElementById('atitude').value;
 
@@ -268,6 +280,8 @@
             `*Nome:* ${nome}%0A` +
             `*Local:* ${bairro}%0A` +
             `*Disponibilidade:* ${disponibilidade}%0A%0A` +
+            `*Experiência Tech:*%0A${experiencia}%0A%0A` +
+            `*Interesse em IA/Sistemas:*%0A${dev_ia}%0A%0A` +
             `*Interesse na Parceria:*%0A${interesse}%0A%0A` +
             `*Postura/Atendimento:*%0A${atitude}`;
 
