@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GP Tech - Parceria Operacional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: #020617;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: radial-gradient(circle at top right, rgba(163, 230, 53, 0.08), transparent 40%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background: #0f172a;
+            border: 1px solid rgba(163, 230, 53, 0.2);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #a3e635, #65a30d);
+            border-radius: 24px 24px 0 0;
+        }
+
+        /* --- ANIMAÇÃO DO LOGO SVG --- */
+        .header { text-align: center; margin-bottom: 30px; }
+        
+        .logo-svg {
+            width: 280px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 45px;
+            font-weight: 800;
+            fill: none;
+            stroke: #a3e635;
+            stroke-width: 1.5;
+            stroke-dasharray: 500;
+            stroke-dashoffset: 500;
+            animation: draw 3s forwards ease-in-out;
+        }
+
+        .logo-tech {
+            fill: #f8fafc;
+            opacity: 0;
+            animation: fadeIn 1s forwards 2.5s;
+        }
+
+        @keyframes draw {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .header h1 { font-family: 'Urbanist', sans-serif; font-size: 20px; color: #94a3b8; font-weight: 600; letter-spacing: 1px; }
+
+        /* --- INFO BOX ATUALIZADA --- */
+        .info-box {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 25px;
+            border-radius: 16px;
+            border-left: 4px solid #a3e635;
+            margin-bottom: 30px;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        .info-box strong { color: #a3e635; }
+        .info-box b { color: #f8fafc; }
+
+        .workflow-list {
+            margin-top: 15px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .workflow-list li {
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .workflow-list li::before {
+            content: '→';
+            position: absolute;
+            left: -20px;
+            color: #a3e635;
+        }
+
+        /* --- FORMULÁRIO --- */
+        .form-group { margin-bottom: 22px; }
+        .form-group label { display: block; font-size: 14px; font-weight: 600; color: #f1f5f9; margin-bottom: 8px; }
+        .form-group label span { color: #a3e635; margin-left: 4px; }
+
+        .input-wrapper { position: relative; }
+        .input-wrapper i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #64748b; }
+
+        .form-control {
+            width: 100%;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 14px 16px 14px 48px;
+            color: #f8fafc;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus { outline: none; border-color: #a3e635; box-shadow: 0 0 0 3px rgba(163, 230, 53, 0.1); }
+
+        textarea.form-control { padding-left: 16px; min-height: 90px; resize: vertical; }
+
+        .radio-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 5px; }
+        .radio-option {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .radio-option input { margin-right: 12px; accent-color: #a3e635; }
+        .radio-option:hover { border-color: rgba(163, 230, 53, 0.4); }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(90deg, #a3e635, #65a30d);
+            color: #020617;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 16px;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 20px -10px rgba(163, 230, 53, 0.5);
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+        .footer { text-align: center; margin-top: 25px; font-size: 12px; color: #475569; }
+
+        @media (max-width: 480px) {
+            .container { padding: 30px 20px; }
+            .radio-group { grid-template-columns: 1fr; }
+            .logo-svg { width: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <svg class="logo-svg" viewBox="0 0 300 60">
+            <text x="10" y="45" class="logo-text">GP <tspan class="logo-tech">TECH</tspan></text>
+        </svg>
+        <h1>ALINHAMENTO ESTRATÉGICO</h1>
+    </div>
+
+    <div class="info-box">
+        A <strong>GP Tech</strong> é focada em tecnologia e experiência digital. Na nossa parceria com o <strong>Deck</strong>, operamos um sistema híbrido de recordação e feedback.
+        <br><br>
+        <b>Como funciona o serviço?</b>
+        <ul class="workflow-list">
+            <li>Capturamos fotos profissionais dos clientes no salão;</li>
+            <li>Processamos o design via <b>Canva</b> em tempo real;</li>
+            <li>Realizamos a impressão fotográfica na hora;</li>
+            <li><b>Recortamos e montamos</b> os chaveiros físicos;</li>
+            <li>Entregamos a experiência finalizada na mesa do cliente.</li>
+        </ul>
+    </div>
+
+    <form id="partnerForm" onsubmit="sendToWhatsApp(event)">
+        <div class="form-group">
+            <label for="nome">Seu Nome Completo<span>*</span></label>
+            <div class="input-wrapper">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="nome" class="form-control" required placeholder="Digite aqui">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="bairro">Onde você mora? (Bairro/Cidade)<span>*</span></label>
+            <div class="input-wrapper">
+                <i class="fa-solid fa-location-dot"></i>
+                <input type="text" id="bairro" class="form-control" required placeholder="Ex: Centro, Piracicaba">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Disponibilidade (Finais de Semana e Feriados)?<span>*</span></label>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="disponibilidade" value="Sim, total Disponibilidade" required>
+                    <span>Sim, total Disponibilidade</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="disponibilidade" value="Apenas alguns dias" required>
+                    <span>Apenas alguns dias</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="interesse">O que mais te despertou interesse nesta parceria com a GP Tech?<span>*</span></label>
+            <textarea id="interesse" class="form-control" required placeholder="Com base no fluxo de fotos e montagem que explicamos acima..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="atitude">Como você lida com atendimento ao público sob pressão?<span>*</span></label>
+            <textarea id="atitude" class="form-control" required placeholder="Conte sobre sua postura em ambientes movimentados."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">
+            FINALIZAR ALINHAMENTO
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </form>
+
+    <div class="footer">GP Tech &copy; 2026 | Sistemas & Soluções Digitais</div>
+</div>
+
+<script>
+    function sendToWhatsApp(event) {
+        event.preventDefault();
+        
+        const nome = document.getElementById('nome').value;
+        const bairro = document.getElementById('bairro').value;
+        const disponibilidade = document.querySelector('input[name="disponibilidade"]:checked').value;
+        const interesse = document.getElementById('interesse').value;
+        const atitude = document.getElementById('atitude').value;
+
+        const msg = `*ALINHAMENTO DE PARCERIA - GP TECH*%0A%0A` +
+            `*Nome:* ${nome}%0A` +
+            `*Local:* ${bairro}%0A` +
+            `*Disponibilidade:* ${disponibilidade}%0A%0A` +
+            `*Interesse na Parceria:*%0A${interesse}%0A%0A` +
+            `*Postura/Atendimento:*%0A${atitude}`;
+
+        const telefone = "5519993405480"; 
+        window.open(`https://api.whatsapp.com/send?phone=${telefone}&text=${msg}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
